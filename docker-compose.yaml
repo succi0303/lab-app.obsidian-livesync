@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  couchdb:
+    image: couchdb:latest
+    ports:
+      - 5984:5984
+    volumes:
+      - couchdb-etc:/opt/couchdb/etc/local.d
+      - couchdb-data:/opt/couchdb/data
+    environment:
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
+      - COUCHDB_USER=${COUCHDB_USERNAME}
+    restart: always
+    container_name: couchdb-for-ols
+volumes:
+  couchdb-etc:
+  couchdb-data:
